@@ -1,0 +1,141 @@
+/* CSS Reset */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* CSS variables */
+:root{
+    --navbar-height: 59px
+}
+
+/* Navigation Bar */
+#navbar{
+    display: flex;
+    align-items: center;
+    position:relative;
+    top: 0px;
+}
+#navbar::before{
+    content: "";
+    background-color: black;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+/* Navigation Bar: Logo and Image */
+#logo{
+margin: 4px 7px
+}
+#logo img{
+    height: 47px;
+    margin: 2px 6px;
+}
+
+/* Navigation Bar: List Styling */
+
+
+#navbar ul{
+    display: flex;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#navbar ul li{
+    list-style: none;
+    font-size: 1.3rem;
+}
+#navbar ul li a{
+    color: white;
+   display: block;
+   padding: 3px 22px;
+   border-radius: 20px;
+   text-decoration: none;
+}
+#navbar ul li a:hover{
+    color: black;
+   background-color: white;
+}
+
+/* Home Section */
+#home{
+    display: flex;
+    flex-direction: column;
+    height: 315px;
+    padding: 92px 200px;
+    justify-content: center;
+    align-items: center;
+}
+#home::before{
+    content: "";
+    background:url('../img1.jpg') no-repeat center center/cover ;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.8;
+}
+#home h1{
+    color: #3c0000;
+    text-align: center;
+    font-family: 'Train One', cursive;
+   
+}
+#home p{
+    color: black;
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+/* Specials Section */
+#specials{
+    margin: 34px;
+    display: flex;
+}
+#specials .box{
+    border: 2px solid brown;
+    padding: 27px;
+    margin: 7px 13px;
+    border-radius: 23px;
+    
+    background-color:#e8dfdf;
+}
+#specials .box img{
+   height: 217px;
+   margin: auto;
+   display: block;
+}
+#specials .box p{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+#specials{}
+
+/* Utility Classes */
+.h-primary{
+    font-size: 2.8rem;
+    padding-top: 70px ;
+    padding-bottom: 0px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.h-secondary{
+    font-size: 1.8rem;
+    padding: 12px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.btn{
+    padding: 6px 20px;
+    border: 2px solid white;
+    background-color: brown;
+    color: white;
+    margin: 17px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.center{
+    text-align: center;
+}
+
