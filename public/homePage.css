@@ -70,7 +70,7 @@ margin: 4px 7px
 }
 #home::before{
     content: "";
-    background:url('../img1.jpg') no-repeat center center/cover ;
+    background:url('/img1.jpg') no-repeat center center/cover ;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -110,7 +110,7 @@ margin: 4px 7px
 #specials .box p{
     font-family: 'Roboto Condensed', sans-serif;
 }
-#specials{}
+/*#specials{} */
 
 /* Utility Classes */
 .h-primary{
