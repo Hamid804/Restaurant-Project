@@ -1,0 +1,58 @@
+#admin-form
+{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+#admin-content
+{
+	background-color: #e8f1f5;
+	box-shadow: -6px 6px 10px 1px rgba(44, 44, 44, 0.75);
+	-webkit-box-shadow: -6px 6px 10px 1px rgba(44, 44, 44, 0.75);
+	-moz-box-shadow: -6px 6px 10px 1px rgba(44, 44, 44, 0.75);
+}
+#admin
+{
+	height: 250px;
+	width: 500px;
+	padding: 20px;
+	border-radius: 50%;
+	position: relative;
+}
+#admin-input
+{
+	margin: auto;
+	display: block;
+	width: 50%;
+	padding: 10px;
+	border: 1px solid black;
+}
+#adminlogin
+{
+	margin-top: 25px;
+	padding: 10px;
+	width: 20%;
+}
+#adminimg
+{
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+}
+
+#crossimg
+{
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	background-color:white;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	cursor: pointer;
+}
