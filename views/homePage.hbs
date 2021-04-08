@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Buddha Eats and Restaurant | BuddhaEats.com</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/adminPage.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,7 +21,7 @@
             <li class="item"><a href="#">Home</a></li>
             <li class="item"><a href="#">Menu</a></li>
             <li class="item"><a href="#">Login</a></li>
-            <li class="item"><a href="#">Admin Login</a></li>
+            <li class="item"><a href="#" onclick="admin()">Admin Login</a></li>
             <li class="item"><a href="#">My Orders</a></li>
             <li class="item"><a href="#">Contact Us</a></li>
         </ul>
@@ -54,5 +55,26 @@
           
         </div>
     </section>
+<div id="admin-form">
+   <div id="admin-content">
+      <form id="admin">
+         <img src="cross.jpg" id="crossimg" onclick="cross()">
+         <H1>Admin Login</H1>
+         <img src="login.jpg" id="adminimg">
+         <input type="email" name="email" id="admin-input" placeholder="email"><br>
+         <input type="password" name="password" id="admin-input" placeholder="password">
+         <input type="button" name="login" value="login" id="adminlogin">
+      </form>
+   </div>
+</div>
+<script type="text/javascript">
+   function admin()
+   {
+     document.querySelector("#admin-form").style.display="flex";
+   }
+   function cross(){
+     document.querySelector("#admin-form").style.display="none";
+   }
+</script>
 </body>
 </html>
