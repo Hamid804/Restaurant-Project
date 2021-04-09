@@ -16,8 +16,8 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
 
 app.use('/',require('./routes/pages'));
-//app.use('/auth',require('./routes/auth'));
+app.use('/auth',require('./routes/auth'));
 
-app.listen(8080, ()=>{
-    console.log("Server started on port 8080");
+app.listen(8000, ()=>{
+    console.log("Server started on port 8000");
 });

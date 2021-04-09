@@ -57,13 +57,13 @@
     </section>
 <div id="admin-form">
    <div id="admin-content">
-      <form id="admin">
-         <img src="cross.jpg" id="crossimg" onclick="cross()">
+      <form id="admin" action="/auth/adminLogin" method="POST">
+         <img src="/cross.jpg" id="crossimg" onclick="cross()">
          <H1>Admin Login</H1>
-         <img src="login.jpg" id="adminimg">
+         <img src="/login.jpg" id="adminimg">
          <input type="email" name="email" id="admin-input" placeholder="email"><br>
          <input type="password" name="password" id="admin-input" placeholder="password">
-         <input type="button" name="login" value="login" id="adminlogin">
+         <button type="submit" id="adminlogin">Log In</button>
       </form>
    </div>
 </div>
