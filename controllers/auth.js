@@ -29,3 +29,26 @@ exports.adminLogin=(req,res)=>{
         }
     });
 }
+
+exports.customerLogin=(req,res)=>{
+    var mCustomerEmail=req.body.user_id;
+    var mCustomerPassword=req.body.user_pwd;
+
+    db.query('SELECT cEmail, cPassword FROM customer WHERE cEmail=? AND cPassword=?',[mCustomerEmail,mCustomerPassword],(err,results)=>{
+        if(err){
+            console.log(err);
+        }
+        if(!mCustomerEmail || !mCustomerPassword){
+            return res.status(400).render('clogin',{
+                message: "Please fill id and password"
+            });
+        }
+        if(results.length>0){
+            return res.render('homePage');
+        }else{
+            return res.render('clogin',{
+                message: "Wrong Id or Password..."
+            });
+        }
+    });
+}

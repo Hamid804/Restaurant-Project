@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" href="css/clogin.css">
+    <link rel="stylesheet" type="text/css" href="/clogin.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600;700&family=Parisienne&display=swap"
       rel="stylesheet"
@@ -20,13 +20,13 @@
     <nav>
         <h1 id="logo">Buddha Bakers</h1>
         <ul id="list">
-          <a href="">
+          <a href="/home">
             <li class="nav-icons">Home</li>
           </a>
-          <a href="menu.html">
+          <a href="/menu">
             <li class="nav-icons">Menu</li>
           </a>
-          <a href="clogin.html">
+          <a href="#">
             <li class="nav-icons">My Account</li>
           </a>
           <a href="#">
@@ -41,14 +41,17 @@
         <div id="div1">
             <h2>Login</h2>
             <hr />
-            <form action="">
-                <input type="text" name="user-id" placeholder="Email" />
+            <form action="/auth/customerLogin" method="POST">
+                <input type="text" name="user_id" placeholder="Email" />
                 <br />
-                <input type="password" name="pwd" placeholder="Password" />
+                <input type="password" name="user_pwd" placeholder="Password" />
                 <br />
-                <button id="login-btn">Log In</button>
+                <button type="submit" id="login-btn">Log In</button>
                 <br />
             </form>
+            {{#if message}}
+                <h4 class="alert alert-danger mt-4">{{message}}</h4>
+            {{/if}}
         </div>
         <img src="https://media.giphy.com/media/X9c0WdcvGYEZRNnXK2/giphy.gif" alt="">
     </div>
