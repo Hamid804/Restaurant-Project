@@ -1,40 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-</style>
+	<title>ADMIN</title>
+	<style type="text/css">
+		body
+		{
+			text-align: center;
+			background-color: #e8f1f5;
+		}
+		h1
+		{
+			    font-family: 'Train One', cursive;
+		}
+		h2
+		{
+			font-family: Parisienne, cursive;
+			font-style: normal;
+			font-weight: bolder;
+			font-size: 30px;
+			color: #3E206D;
+		}
+		button
+		{
+			padding: 10px;
+			width: 300px;
+			color: #3E206D;
+		}
+		button:hover
+		{
+			transform: scale(1.5);
+		}
+		table
+		{
+			/**border: 1px solid #3E206D;**/
+			overflow-x: auto;
+		}
+		p{
+			width: 700px;
+			margin: auto;
+			background-color:#efc0fe;
+			padding: 20px;
+			display:none;
+			margin-top: 30px;
+			box-shadow: -6px 6px 10px 1px rgba(44, 44, 44, 0.75);
+			-webkit-box-shadow: -6px 6px 10px 1px rgba(44, 44, 44, 0.75);
+			-moz-box-shadow: -6px 6px 10px 1px rgba(44, 44, 44, 0.75);
+		}
+		th
+		{
+			font-size: 23px;
+		}
+	</style>
 </head>
 <body>
-
-<h2>Collapsed Borders</h2>
-<p>If you want the borders to collapse into one border, add the CSS border-collapse property.</p>
-
-<table style="width:100%">
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th> 
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>John</td>
-    <td>Doe</td>
-    <td>80</td>
-  </tr>
-</table>
-
+	<h1>Buddha Eats and Restaurant</h1>
+	<h2>ORDER DETAILS</h2>
+	<button onclick="table()">Get Order Details</button>
+	<p id="content"></p>
 </body>
+<script type="text/javascript">
+
+	function table()
+	{
+	document.querySelector("#content").style.display="flex";
+	var names=['Carl','James','Michael','Joey'];
+	var address=['ATP-1201','ATP-4567','ATP-4567','ATP-2156'];
+	var contact=['1234567890','1234567890','1234567890','1234567890'];
+
+	var dish=['Americano','Hot Chocolate','Strawberry','tea'];
+	var quantity=[2,1,1,2];
+
+	var total=[140,80,150,60];
+
+	var table="";
+	table=table+'<tr>';
+	table=table+'<th colspan="3">'+"customer details"+'</th>';
+	table+='<th colspan="2">'+"Order Details"+'</th>';
+	table+='<th>'+"Total"+'</th>';
+	table+='</tr>';
+
+	table+='<tr>';
+	table+='<th>'+"Name"+'</th>';
+	table+='<th>'+"Address"+'</th>';
+	table+='<th>'+"Contact"+'</th>';
+	table+='<th>'+"Dish"+'</th>';
+	table+='<th>'+"Quantity"+'</th>';
+
+
+	for(var i=0;i<4;i++)
+	{
+		table=table+'<tr>';
+
+		table+='<td>'+names[i]+'</td>';
+		table+='<td>'+address[i]+'</td>';
+		table+='<td>'+contact[i]+'</td>';
+		table+='<td>'+dish[i]+'</td>';
+		table+='<td>'+quantity[i]+'</td>';
+		table+='<td>'+total[i]+'</td>';
+		table+='</tr>';
+
+	}
+	document.getElementById("content").innerHTML='<table cellspacing=20px; cellpadding=10px;>'+table+'</table>';
+}
+</script>
 </html>
