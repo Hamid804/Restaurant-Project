@@ -25,13 +25,16 @@
             <li class="item"><a href="#">My Orders</a></li>
             <li class="item"><a href="#">Contact Us</a></li>
         </ul>
+        
     </nav>
+    <h3 id="check" style="text-align: right; color:#eeff00;"></h3>
 
+    
     <section id="home">
         <h1 class="h-primary">Welcome to Buddha Eats and Restaurant</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis repudiandae quo similique dolorum neque iusto voluptatum quibusdam ducimus facere quam!
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis repudiandae quo similique dolorum neque iusto voluptatum quibusdam ducimus facere quam!</p>
-        <button class="btn">Order Now</button>
+        <a href="/menu"><button class="btn">Order Now</button></a>
     </section>
 
     <section class="special-orders">
@@ -75,6 +78,27 @@
    function cross(){
      document.querySelector("#admin-form").style.display="none";
    }
+  /* {{#if confirmation}}
+        function saveId(){
+            var x={{confirmation}};
+            localStorage.setItem("emailId",x); 
+            
+        }
+        document.getElementById("check").innerHTML="Hello";
+        saveId();
+   {{/if}} */
+
+   if(localStorage.emailId.length>0){
+       document.getElementById("check").innerHTML=localStorage.emailId;
+   }
+
 </script>
+   {{#if confirmation}}
+       <script>
+           var x="{{confirmation}}";
+           localStorage.setItem("emailId",x);
+           document.getElementById("check").innerHTML=localStorage.emailId;
+       </script>
+   {{/if}}
 </body>
 </html>

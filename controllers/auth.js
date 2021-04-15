@@ -1,4 +1,5 @@
 var mysql=require('mysql');
+var url=require('url');
 
 var db=mysql.createConnection({
     host:'localhost',
@@ -44,7 +45,9 @@ exports.customerLogin=(req,res)=>{
             });
         }
         if(results.length>0){
-            return res.render('homePage');
+            return res.render('homePage',{
+                confirmation: results[0].cEmail
+            });
         }else{
             return res.render('clogin',{
                 message: "Wrong Id or Password..."
@@ -52,3 +55,45 @@ exports.customerLogin=(req,res)=>{
         }
     });
 }
+
+exports.cartAdd=(req,res)=>{
+    var q=url.parse(req.url,true);
+    var qdata=q.query;
+    
+    var cEmailId=qdata.id;
+    var pid=qdata.pId;
+   /* console.log(qdata.pId);
+    console.log(qdata.id); */
+
+    db.query('SELECT cId FROM customer where cEmail=?',[cEmailId],(err,results)=>{
+        if(err){
+            console.log(err);
+        }
+        if(results.length>0){
+            var cId=results[0].cId;
+            db.query('SELECT pId FROM cart WHERE cId=? AND pId=?',[cId,pid],(err,results)=>{
+                if(err){
+                    console.log(err);
+                }
+                if(results.length>0){
+                    return res.render("menuPage",{
+                        message: "This item is already added"  //JSON.stringify(results[0])
+                    });
+                }else{
+                    db.query('INSERT INTO cart SET ?',{cId:cId,pId:pid},(err,results)=>{
+                        if(err){
+                            console.log(err);
+                        }else{
+                            return res.render("menuPage",{
+                                
+                            });
+                        }
+                    });
+                }
+            });
+        }else{
+            return res.render("menuPage");
+        }
+    });
+}
+

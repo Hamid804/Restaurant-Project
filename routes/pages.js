@@ -1,5 +1,7 @@
 const express=require('express');
 const router=express.Router();
+const authController=require('../controllers/auth');
+
 
 router.get('/',(req,res)=>{
     res.render("homePage");
@@ -14,6 +16,12 @@ router.get('/menu',(req,res)=>{
 });
 
 router.get('/customerlogin',(req,res)=>{
+    res.render("clogin");
+});
+
+router.get('/cart',authController.cartAdd);
+
+router.get('/alert',(req,res)=>{
     res.render("clogin");
 });
 
