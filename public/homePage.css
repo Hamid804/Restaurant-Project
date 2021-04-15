@@ -3,7 +3,13 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: #E8F1F5;
+}
 
+html{
+    scroll-behavior: smooth;
+}
 /* CSS variables */
 :root{
     --navbar-height: 59px
@@ -11,12 +17,14 @@
 
 /* Navigation Bar */
 #navbar{
+    background-color: #E8F1F5;
     display: flex;
     align-items: center;
-    position:relative;
+    position:sticky;
     top: 0px;
+    z-index: 1;
 }
-#navbar::before{
+/* #navbar::before{
     content: "";
     background-color: black;
     position: absolute;
@@ -24,7 +32,7 @@
     width: 100%;
     z-index: -1;
     opacity: 0.4;
-}
+} */
 
 /* Navigation Bar: Logo and Image */
 #logo{
@@ -48,7 +56,7 @@ margin: 4px 7px
     font-size: 1.3rem;
 }
 #navbar ul li a{
-    color: white;
+  color: #46B3E6;
    display: block;
    padding: 3px 22px;
    border-radius: 20px;
@@ -63,14 +71,14 @@ margin: 4px 7px
 #home{
     display: flex;
     flex-direction: column;
-    height: 315px;
+    height: 356px;
     padding: 92px 200px;
     justify-content: center;
     align-items: center;
 }
 #home::before{
     content: "";
-    background:url('/img1.jpg') no-repeat center center/cover ;
+    background:url('../img1.jpg') no-repeat center center/cover ;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -110,7 +118,77 @@ margin: 4px 7px
 #specials .box p{
     font-family: 'Roboto Condensed', sans-serif;
 }
-/*#specials{} */
+
+/*Clients Section*/
+
+#client-section::before{
+    content: "";
+    position: absolute;
+    background: url('../bg2.webp');
+    width: 100%;
+    height: 400px;
+    z-index: -1;
+    opacity: 0.4;
+    
+}
+#clients{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#clients img{
+    height: 150px;
+
+}
+.client-item{
+    padding: 77px;
+}
+
+/* Contacts Section */
+#contact{
+position: relative;
+top: 100px;
+}
+#contact::before{
+    content: "";
+    position: absolute;
+  width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+    background: url('../contact.webp') no-repeat center center/cover;
+}
+#contact-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 34px;
+}
+
+#contact-box form{
+    width: 40%;
+}
+#contact-box label{
+    font-size: 1.3rem;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+#contact-box input,
+#contact-box textarea{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 9px;
+    font-size: 1.1rem;
+}
+
+footer{
+    background: black;
+    color: white;
+    padding: 4px 20px;
+    bottom: 0%;
+    margin-top: 100px;
+}
 
 /* Utility Classes */
 .h-primary{
