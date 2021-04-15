@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Buddha Eats and Restaurant | BuddhaEats.com</title>
-    <link rel="stylesheet" type="text/css" href="/homePage.css">
-    <link rel="stylesheet" type="text/css" href="/adminPage.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" media="screen and (max-width: 1060px" href="css/phone.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -15,49 +15,83 @@
 <body>
     <nav id="navbar">
         <div id="logo">
-            <img src="/logo1.png" alt="BuddhaEats.com">
+            <img src="logo1.png" alt="BuddhaEats.com">
         </div>
         <ul>
-            <li class="item"><a href="/home">Home</a></li>
-            <li class="item"><a href="/menu">Menu</a></li>
-            <li class="item"><a href="/customerlogin">Login</a></li>
+            <li class="item"><a href="#home">Home</a></li>
+            <li class="item"><a href="#">Menu</a></li>
+            <li class="item"><a href="#">Login</a></li>
             <li class="item"><a href="#" onclick="admin()">Admin Login</a></li>
             <li class="item"><a href="#">My Orders</a></li>
-            <li class="item"><a href="#">Contact Us</a></li>
+            <li class="item"><a href="#contact">Contact Us</a></li>
         </ul>
-        
     </nav>
     <h3 id="check" style="text-align: right; color:#eeff00;"></h3>
-
-    
     <section id="home">
         <h1 class="h-primary">Welcome to Buddha Eats and Restaurant</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis repudiandae quo similique dolorum neque iusto voluptatum quibusdam ducimus facere quam!
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis repudiandae quo similique dolorum neque iusto voluptatum quibusdam ducimus facere quam!</p>
-        <a href="/menu"><button class="btn">Order Now</button></a>
+        <button class="btn">Order Now</button>
     </section>
 
-    <section class="special-orders">
+    <section id="special-orders">
         <h1 class="h-primary center">Our Specials</h1>
         <div id="specials">
             <div class="box">
-                <img src="/thali.png" alt="">
-                <h2 class="h-secondary center">Buddha Special Thali</h2>
+                <img src="pas.png" alt="">
+                <h2 class="h-secondary center">Buddha Special Pastry</h2>
                 <p class="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deserunt nostrum eos iusto assumenda qui iste laboriosam dolore nihil, ullam praesentium architecto ratione velit exercitationem veniam id cumque facere dicta saepe. Voluptatum, consequuntur dolor.</p>
             </div>
             <div class="box">
-                <img src="/cake.png" alt="">
-                <h2 class="h-secondary center">Buddha Special Bakery</h2>
+                <img src="cake.png" alt="">
+                <h2 class="h-secondary center">Buddha Special Cakes</h2>
                 <p class="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deserunt nostrum eos iusto assumenda qui iste laboriosam dolore nihil, ullam praesentium architecto ratione velit exercitationem veniam id cumque facere dicta saepe. Voluptatum, consequuntur dolor.</p>
             </div>
             <div class="box">
-                <img src="/pizza.png" alt="">
-                <h2 class="h-secondary center">Buddha Special Pizza</h2>
+                <img src="bev.png" alt="">
+                <h2 class="h-secondary center">Buddha Special Beverages</h2>
                 <p class="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deserunt nostrum eos iusto assumenda qui iste laboriosam dolore nihil, ullam praesentium architecto ratione velit exercitationem veniam id cumque facere dicta saepe. Voluptatum, consequuntur dolor.</p>
             </div>
           
         </div>
     </section>
+
+    <section id="client-section">
+        <h1 class="h-primary center">Our Clients</h1>
+        <div id="clients">
+            <div class="client-item">
+                <img src="zomato.png" alt="Our Client">
+            </div>
+            <div class="client-item">
+                <img src="swiggy.png" alt="Our Client">
+            </div>
+            <div class="client-item">
+                <img src="fpanda.png" alt="Our Client">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h1 class="h-primary center">Contact Us</h1>
+        <div id="contact-box">
+            <form action="">
+                <div class="form-group">
+                    <label for="name">Name: </label>
+                    <input type="text" name="name" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone No: </label>
+                    <input type="phone" name="name" id="phone" placeholder="Enter your Phone no.">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message: </label>
+                    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                </div>
+            </form>
+        </div>
+    </section>
+
+   
 <div id="admin-form">
    <div id="admin-content">
       <form id="admin" action="/auth/adminLogin" method="POST">
@@ -100,5 +134,10 @@
            document.getElementById("check").innerHTML=localStorage.emailId;
        </script>
    {{/if}}
+ <footer>
+        <div class="center">
+            Copyright &copy; www.buddhaeats.com | All Rights Reserved |
+        </div>
+    </footer>
 </body>
 </html>
