@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Orders</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600;700&family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+     <link rel="stylesheet" type="text/css" href="https://fonts.google.com/specimen/New+Tegomin?preview.text=hot%20chocolate&preview.text_type=custom">
+	<link rel="stylesheet" type="text/css" href="/addToCart.css">
+</head>
+<body>
+  <div class="container">
+  	<div id="upper">
+	<nav>
+        <h1 id="logo">Buddha Bakers</h1>
+        <ul id="list">
+          <a href="/home">
+            <li class="nav-icons">Home</li>
+          </a>
+          <a href="/menu">
+            <li class="nav-icons">Menu</li>
+          </a>
+          <a href="#">
+            <li class="nav-icons">My Account</li>
+          </a>
+        </ul>
+      </nav><br>
+  </div>
+  <hr>
+   <h3><strong>Secure checkout</strong></h3><br>
+
+   <div id="Address" class="row">
+   	<div class="col-sm-7">
+   	<div id="delivery_address">
+   		<h4><strong>Delivery Address</strong></h4>
+   		<textarea id="type_address" class="input-textarea" name="comment" placeholder="Add your Address here..."></textarea><br>
+   		<input type="button" name="" value="Add Address" id="addaddress">
+   	</div><br>
+   	<button id="summary_btn" onclick="summary()">Get Order Summary</button>
+   </div>
+   	<div class="col-sm-5" id="payment_method">
+   		<br><br><br>
+   		<h4><strong>Payment Method</strong></h4>
+   		<dd>~Select your payment method</dd>
+   		<ul>
+   		<label style="font-size: 20px;">Cash
+   		<input type="checkbox" name="" style="margin-right: 0px;"></label>
+   		<hr>
+   		<!--<li>Pay Via Upi</li><hr>
+   		<li>Net Banking</li><hr>
+   		<li>Credit & Debit Cards</li>   				
+   		</ul>-->
+   	</div>
+   </div><br><br>
+
+   <div class="row">
+   	<div class="col-sm-12" id="summary"></div>
+   </div>
+   <div class="row">
+   	<div class="col-sm-12" id="Confirmorder"></div>
+   </div>
+
+  </div>
+
+</body>
+
+<script type="text/javascript">
+	sum=0;
+	function summary()
+	{
+		document.querySelector("#summary").style.display="flex";
+		var images=['hotchclte.jfif','latte.jfif']
+		var product=['Hot Chocolate','Latte']
+		var category=['Beverages','Beverages']
+		var unit_price=[80,80]
+
+		var table="";
+		table=table+'<tr>';
+		table=table+'<th class="col-sm-4">'+"Product"+'</th>';
+		table+='<th class="col-sm-2">'+"Category"+'</th>';
+		table+='<th class="col-sm-2">'+"Quantity"+'</th>';
+		table+='<th class="col-sm-2">'+"Unit Price"+'</th>';
+		table+='<th class="col-sm-2">'+'</th>'
+		table+='</tr>';
+
+		for(var i=0;i<product.length;i++)
+		{
+			table=table+'<tr>';
+			/**table+='<td>'+'<img src="" id="item_img">'+'</td>';**/
+			table+='<td id="products_ordered">'+'<strong>'+product[i]+'</strong>'+'</td>';
+			table+='<td>'+category[i]+'</td>';
+			table+='<td>'+'<input type="text" name="quantity" id="quantity" value="0">'+'</td>';
+			table+='<td id="up">'+unit_price[i]+'</td>';
+			table+='<td>'+'<button id="remove_btn">'+"Remove"+'</button>'+'</td>'
+			/**item_img.setAttribute('src',images[i])**/
+			table+='</tr>';
+		}
+		document.getElementById("summary").innerHTML='<table>'+table+'</table>';
+		document.getElementById("Confirmorder").innerHTML='<button id="confirm">'+"Confirm Order"+'</button>';
+
+
+	}
+</script>
+
+</html>
