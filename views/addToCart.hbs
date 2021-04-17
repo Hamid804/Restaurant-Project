@@ -37,9 +37,11 @@
    <div id="Address" class="row">
    	<div class="col-sm-7">
    	<div id="delivery_address">
-   		<h4><strong>Delivery Address</strong></h4>
+   		<h4><strong>Delivery Details</strong></h4>
+		<input type="text" name="name" placeholder="Add your name" id="details">
+		<input type="tel" name="contact" placeholder="Add your contact no." id="details">
    		<textarea id="type_address" class="input-textarea" name="comment" placeholder="Add your Address here..."></textarea><br>
-   		<input type="button" name="" value="Add Address" id="addaddress">
+   		<input type="button" name="" value="Add Details" id="addaddress">
    	</div><br>
    	<button id="summary_btn" onclick="summary()">Get Order Summary</button>
    </div>
@@ -94,7 +96,7 @@
 			/**table+='<td>'+'<img src="" id="item_img">'+'</td>';**/
 			table+='<td id="products_ordered">'+'<strong>'+product[i]+'</strong>'+'</td>';
 			table+='<td>'+category[i]+'</td>';
-			table+='<td>'+'<input type="text" name="quantity" id="quantity" value="0">'+'</td>';
+			table+='<td>'+'<input type="number" name="quantity" id="quantity" value="0" min="0" max="10">'+'</td>';
 			table+='<td id="up">'+unit_price[i]+'</td>';
 			table+='<td>'+'<button id="remove_btn">'+"Remove"+'</button>'+'</td>'
 			/**item_img.setAttribute('src',images[i])**/
