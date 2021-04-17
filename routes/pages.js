@@ -19,6 +19,12 @@ router.get('/customerlogin',(req,res)=>{
     res.render("clogin");
 });
 
+/*router.get('/addToCart',(req,res)=>{
+    res.render("addToCart");
+}); */
+
+router.get('/addToCart',authController.addToCartPage);
+
 router.get('/cart',authController.cartAdd);
 
 router.get('/alert',(req,res)=>{

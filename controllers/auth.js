@@ -97,3 +97,41 @@ exports.cartAdd=(req,res)=>{
     });
 }
 
+exports.addToCartPage=(req,res)=>{
+    var q=url.parse(req.url,true);
+    var qdata=q.query;
+    var cEmailId=qdata.cEmId;
+
+    db.query('SELECT cId FROM customer WHERE cEmail=?',[cEmailId],(err,results)=>{
+        if(err){
+            console.log(err);
+        }
+        if(results.length>0){
+            var cId=results[0].cId;
+            //console.log(cId);
+
+            db.query('SELECT pId FROM cart WHERE cId=?',[cId],(err,results)=>{
+                if(err){
+                    console.log(err);
+                }
+                if(results.length>0){
+                    console.log(results.length);
+                    var totalP=results.length;
+
+                    console.log(results[0]);
+                   // var result='{"a":"b","c":"d"}';
+                   var result=JSON.stringify(results);
+                    return res.render("addToCart",{
+                        result: result
+                    });
+                }
+            });
+
+
+            //return res.render("addToCart");
+        }else{
+            return res.render("menuPage");
+        }
+    });
+}
+

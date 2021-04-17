@@ -22,13 +22,24 @@
       function checkLogin(id){
         var em=localStorage.emailId;
         if(localStorage.emailId===undefined){
-           var mlink="/alert";
+          var mlink="/alert";
           var ml="mylink"+id;
           document.getElementById(ml).setAttribute("href",mlink);
         }else{
           var mlink="/cart?pId="+id+"&id="+em;
           var ml="mylink"+id;
           document.getElementById(ml).setAttribute("href",mlink);
+        }
+      }
+
+      function addCart(){
+        var em2=localStorage.emailId;
+        if(localStorage.emailId===undefined){
+          var addlink="/alert";
+          document.getElementById("mcart").setAttribute("href",addlink);
+        }else{
+          var addlink2="/addToCart?cEmId="+em2;
+          document.getElementById("mcart").setAttribute("href",addlink2);
         }
       }
     </script>
@@ -60,9 +71,7 @@
           <li class="nav-icons" onclick="admin()">Admin</li>
         </a>
       </ul>
-      <a href=""
-        ><span id="cart">My cart <i class="fas fa-shopping-cart"></i></span
-      ></a>
+      <a id="mcart" href="/addToCart"><span onclick="addCart()" id="cart">My cart <i class="fas fa-shopping-cart"></i></span></a>
     </nav>
 
     <div id="first-div">
