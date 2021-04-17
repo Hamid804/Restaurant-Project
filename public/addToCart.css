@@ -93,7 +93,7 @@ th,td
 }
 #quantity
 {
-    width: 30px;
+    width: 50px;
 }
 #products_ordered {
     font-family: 'New Tegomin', serif;
@@ -113,4 +113,13 @@ th,td
 #confirm:hover
 {
     transform: scale(1.1);
+}
+#details
+{
+    width: 50%;
+    padding: 5px;
+    margin:10px;
+    border:none;
+    background: transparent;
+    border-bottom: 1px solid black;
 }
