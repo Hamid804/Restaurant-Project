@@ -19,5 +19,5 @@ app.use('/',require('./routes/pages'));
 app.use('/auth',require('./routes/auth'));
 
 app.listen(8084, ()=>{
-    console.log("Server started on port 8082");
+    console.log("Server started on port 8084");
 });
