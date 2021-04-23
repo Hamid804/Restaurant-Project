@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Orders</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600;700&family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+     <link rel="stylesheet" type="text/css" href="https://fonts.google.com/specimen/New+Tegomin?preview.text=hot%20chocolate&preview.text_type=custom">
+	<link rel="stylesheet" type="text/css" href="/myOrderPage.css">
+
+	<script>
+		function cancelOrderFun(prdctId){
+		  //document.getElementById("checking").innerHTML="Wow great "+prdctId;
+		  var em=localStorage.emailId;
+		  if(localStorage.emailId===undefined){
+		    alert("Please login first...");
+            var mlink="/alert";
+		    var cancelIdd="cancelId"+prdctId;
+            document.getElementById(cancelIdd).setAttribute("href",mlink);
+	  	  }else{
+			var mlink="/cancelOrder?prdId="+prdctId+"&id="+em;
+			var cancelIdd="cancelId"+prdctId;
+			document.getElementById(cancelIdd).setAttribute("href",mlink);
+		  }
+	    }
+	</script>
+</head>
+<body>
+  <div class="container">
+  	<div id="upper">
+	<nav>
+        <h1 id="logo">Buddha Bakers</h1>
+        <ul id="list">
+          <a href="/home">
+            <li class="nav-icons">Home</li>
+          </a>
+          <a href="/menu">
+            <li class="nav-icons">Menu</li>
+          </a>
+          <a href="#">
+            <li class="nav-icons">My Account</li>
+          </a>
+        </ul>
+      </nav><br>
+  </div>
+  <hr>
+  <h5 id="checking"></h5>
+
+   {{#if oResultPr}}
+       <script>
+		   var abc='{{{oResultPr}}}';
+		   var productId=[];
+		   var product=[];
+		   var unit_price=[];
+		   var category=[];
+		   var images=[];
+		   var n=0;
+		   try {
+				var myData=JSON.parse(abc);
+
+				for(n=0;n<myData.length;n++){
+					productId.push(myData[n].pId);
+					product.push(myData[n].pName);
+					unit_price.push(myData[n].pPrice);
+					category.push(myData[n].pCategory);
+					images.push(myData[n].pImage);
+				}
+				//product.push();
+				//document.getElementById("checking").innerHTML=product;
+            } catch(err) {
+			   document.getElementById("checking").innerHTML=err;
+            }
+	   </script>
+   {{/if}}
+
+   <div id="Address" class="row">
+   	<div class="col-sm-7">
+   	<div id="delivery_address">
+   		<h4><strong>Your Address</strong></h4><br>
+		<p id="details1" class="name_class">Name: </p>
+		<p id="details2" class="contact_class">Contact No: </p>
+		<p id="details3" class="address_class">Address: </p><br>
+   	</div><br>
+
+    {{#if emptyList}}
+      <script>
+          var alrt='{{emptyList}}';
+          alert(alrt);
+      </script>
+    {{/if}}
+
+    {{#if oResultQty}}
+       <script>
+	      var qDet='{{{oResultQty}}}';
+	      var qnty=JSON.parse(qDet);
+       </script>
+    {{/if}}
+
+    {{#if oResultAdd}}
+     <script>
+		 var addr='{{{oResultAdd}}}';
+		 var mAdd=JSON.parse(addr);
+
+		 var u_Name=mAdd[0].cName;
+		 var u_Address=mAdd[0].cAddress;
+		 var u_Contact=mAdd[0].cMobile;
+ 
+		 if(u_Name==null){
+			 document.querySelector("#details1").style.display="none";
+			 document.getElementById("details2").innerHTML="You have not added your address yet...";
+			 document.querySelector("#details3").style.display="none";
+		 }else{
+			 document.querySelector("#details1").style.display="block";
+			 document.querySelector("#details3").style.display="block";
+			 document.getElementById("details1").innerHTML="Name: "+u_Name;
+			 document.getElementById("details2").innerHTML="Contact No: "+u_Contact;
+			 document.getElementById("details3").innerHTML="Address: "+u_Address;
+		 }	 
+	 </script>
+   {{/if}}
+
+   	<button id="summary_btn" onclick="summary()">Get your Orders list</button>
+
+   <div class="row">
+   	<div class="col-sm-17" id="summary"></div>
+   </div>
+   <div class="row">
+   	<div class="col-sm-11" id="totalAmount"></div>
+   </div>
+  </div>
+
+</body>
+
+<script type="text/javascript">
+	function summary()
+	{
+		var sum=0;
+		//document.getElementById("checking").innerHTML=unit_price;
+		document.querySelector("#summary").style.display="flex";
+		/*var images=['hotchclte.jfif','latte.jfif']
+		var product=['Hot Chocolate','Latte']
+		var category=['Beverages','Beverages']
+		var unit_price=[80,80] */
+		var table="";
+		table=table+'<tr>';
+		table=table+'<th class="col-sm-4">'+"Product Image"+'</th>';
+		table+='<th class="col-sm-2">'+"Product"+'</th>';
+		table+='<th class="col-sm-2">'+"Category"+'</th>';
+        table+='<th class="col-sm-2">'+"Unit Price"+'</th>';
+		table+='<th class="col-sm-2">'+"Quantity"+'</th>';
+        table+='<th class="col-sm-2">'+"Total Amount"+'</th>';
+		table+='<th class="col-sm-2">'+'</th>'
+		table+='</tr>';
+		for(var i=0;i<product.length;i++)
+		{
+            var totAm=unit_price[i]*qnty[i];
+			var msrc="/"+images[i]+".jfif";
+			//var item_m='item_img'+i;
+			var ab='<td><img src="'+msrc+'"></td>';
+			table=table+'<tr>';
+			table+=ab; //'<td>'+'<img src="" id="item_img">'+'</td>';
+			table+='<td id="products_ordered">'+'<strong>'+product[i]+'</strong>'+'</td>';
+			table+='<td>'+category[i]+'</td>';
+			table+='<td id="up">'+unit_price[i]+'</td>';
+			sum=sum+Number(unit_price[i]);
+            table+='<td>'+qnty[i]+'</td>';
+            table+='<td>'+totAm+'</td>';
+			table+='<td>'+'<a id="cancelId'+productId[i]+'" href="cancel"><button onclick="cancelOrderFun('+productId[i]+')" id="remove_btn">'+"Cancel Order"+'</button></a>'+'</td>'
+			/**item_img.setAttribute('src',images[i])**/
+			table+='</tr>';
+		}
+		document.getElementById("summary").innerHTML='<table>'+table+'</table>';
+		document.getElementById("totalAmount").innerHTML='<p id="tAmount">Total Amount: Rs '+sum+'/-</p>';
+		//document.getElementById("checking").innerHTML=;
+	}
+
+</script>
+
+</html>

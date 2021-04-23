@@ -31,4 +31,20 @@ router.get('/alert',(req,res)=>{
     res.render("clogin");
 });
 
+router.post('/alert',(req,res)=>{
+    res.render("clogin");
+});
+
+router.get('/addAddress',(req,res)=>{
+    res.render("addAddress");
+});
+
+router.get('/confirmOrder',authController.confirmOrder);
+
+router.get('/removeItem',authController.removeItem);
+
+router.get('/myorder',authController.myorder);
+
+router.get('/cancelOrder',authController.cancelOrder);
+
 module.exports=router;

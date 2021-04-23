@@ -36,7 +36,7 @@
 			overflow-x: auto;
 		}
 		p{
-			width: 700px;
+			width: 950px;
 			margin: auto;
 			background-color:#efc0fe;
 			padding: 20px;
@@ -50,33 +50,104 @@
 		{
 			font-size: 23px;
 		}
+		#list {
+            list-style: none;
+        }
+
+        .nav-icons {
+            float: left;
+            font-family: Merriweather;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            color: #46B3E6;
+            margin-left: 40px;
+
+        }
 	</style>
 </head>
 <body>
-	<h1>Buddha Eats and Restaurant</h1>
+
+<nav>
+    <ul id="list">
+        <a href="/home">
+          <li class="nav-icons">Home</li>
+        </a>
+        <a href="/menu">
+          <li class="nav-icons">Menu</li>
+        </a>
+	</ul>
+</nav><br>
+
+	<h1>Buddha Bakers</h1>
 	<h2>ORDER DETAILS</h2>
 	<button onclick="table()">Get Order Details</button>
 	<p id="content"></p>
+
+
+{{#if cDetails}}
+  <script>
+	  var cDet='{{{cDetails}}}';
+	  var cust=JSON.parse(cDet);
+	  var cName=[];
+	  var cAddress=[];
+	  var cContact=[];
+
+	  var cTotal=cust.length;
+	  //document.getElementById("check").innerHTML=cTotal;
+	  for(let k=0;k<cTotal;k++){
+		  cName.push(cust[k].cName);
+		  cAddress.push(cust[k].cAddress);
+		  cContact.push(cust[k].cMobile);
+	  }
+  </script>
+{{/if}}
+
+{{#if pDetails}}
+  <script>
+	  var pDet='{{{pDetails}}}';
+	  var prdct=JSON.parse(pDet);
+	  var pName=[];
+	  var pPrice=[];
+	  var pCategory=[];
+
+	  var pTotal=prdct.length;
+	  for(let m=0;m<pTotal;m++){
+		  pName.push(prdct[m].pName);
+		  pPrice.push(prdct[m].pPrice);
+		  pCategory.push(prdct[m].pCategory);
+	  }
+  </script>
+{{/if}}
+
+{{#if qDetails}}
+  <script>
+	  var qDet='{{{qDetails}}}';
+	  var qnty=JSON.parse(qDet);
+  </script>
+{{/if}}
+
+
 </body>
 <script type="text/javascript">
 
 	function table()
 	{
 	document.querySelector("#content").style.display="flex";
-	var names=['Carl','James','Michael','Joey'];
+	/*var names=['Carl','James','Michael','Joey'];
 	var address=['ATP-1201','ATP-4567','ATP-4567','ATP-2156'];
-	var contact=['1234567890','1234567890','1234567890','1234567890'];
+	var contact=['1234567890','1234567890','1234567890','1234567890'];*/
 
-	var dish=['Americano','Hot Chocolate','Strawberry','tea'];
-	var quantity=[2,1,1,2];
+	//var dish=['Americano','Hot Chocolate','Strawberry','tea'];
+	//var quantity=[2,1,1,2];
 
-	var total=[140,80,150,60];
+	//var total=[140,80,150,60];
 
 	var table="";
 	table=table+'<tr>';
-	table=table+'<th colspan="3">'+"customer details"+'</th>';
-	table+='<th colspan="2">'+"Order Details"+'</th>';
-	table+='<th>'+"Total"+'</th>';
+	table=table+'<th colspan="3">'+"<u>customer details</u>"+'</th>';
+	table+='<th colspan="4">'+"<u>Order Details</u>"+'</th>';
+	table+='<th colspan="1">'+"<u>Total</u>"+'</th>';
 	table+='</tr>';
 
 	table+='<tr>';
@@ -84,19 +155,25 @@
 	table+='<th>'+"Address"+'</th>';
 	table+='<th>'+"Contact"+'</th>';
 	table+='<th>'+"Dish"+'</th>';
+	table+='<th>'+"Category"+'</th>';
+	table+='<th>'+"Unit Price"+'</th>';
 	table+='<th>'+"Quantity"+'</th>';
+	table+='<th>'+"Total Amount"+'</th>';
 
 
-	for(var i=0;i<4;i++)
+	for(var i=0;i<cTotal;i++)
 	{
+		var tot=pPrice[i]*qnty[i];
 		table=table+'<tr>';
 
-		table+='<td>'+names[i]+'</td>';
-		table+='<td>'+address[i]+'</td>';
-		table+='<td>'+contact[i]+'</td>';
-		table+='<td>'+dish[i]+'</td>';
-		table+='<td>'+quantity[i]+'</td>';
-		table+='<td>'+total[i]+'</td>';
+		table+='<td>'+cName[i]+'</td>';
+		table+='<td>'+cAddress[i]+'</td>';
+		table+='<td>'+cContact[i]+'</td>';
+		table+='<td>'+pName[i]+'</td>';
+		table+='<td>'+pCategory[i]+'</td>';
+		table+='<td>'+pPrice[i]+'</td>';
+		table+='<td>'+qnty[i]+'</td>';
+		table+='<td>'+tot+'</td>';
 		table+='</tr>';
 
 	}

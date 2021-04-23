@@ -12,6 +12,19 @@
     />
      <link rel="stylesheet" type="text/css" href="https://fonts.google.com/specimen/New+Tegomin?preview.text=hot%20chocolate&preview.text_type=custom">
 	<link rel="stylesheet" type="text/css" href="/addToCart.css">
+
+	<script>
+	  function checkLoginOrder(){
+        var em2=localStorage.emailId;
+        if(localStorage.emailId===undefined){
+          var addlink1="/alert";
+          document.getElementById("myOrderLink").setAttribute("href",addlink1);
+        }else{
+          var addlink2="/myorder?cEmId="+em2;
+          document.getElementById("myOrderLink").setAttribute("href",addlink2);
+        }
+      }
+	</script>
 </head>
 <body>
   <div class="container">
@@ -25,24 +38,76 @@
           <a href="/menu">
             <li class="nav-icons">Menu</li>
           </a>
-          <a href="#">
-            <li class="nav-icons">My Account</li>
+          <a id="myOrderLink" href="#">
+            <li onclick="checkLoginOrder()" class="nav-icons">My Orders</li>
           </a>
         </ul>
       </nav><br>
   </div>
   <hr>
-   <h3><strong>Secure checkout</strong></h3><br>
+   <h3 id="checking"><strong>Secure checkout</strong></h3><br>
+
+   {{#if mresult}}
+       <script>
+		   var abc='{{{mresult}}}';
+		   var productId=[];
+		   var product=[];
+		   var unit_price=[];
+		   var category=[];
+		   var images=[];
+		   var n=0;
+		   try {
+				var myData=JSON.parse(abc);
+
+				for(n=0;n<myData.length;n++){
+					productId.push(myData[n].pId);
+					product.push(myData[n].pName);
+					unit_price.push(myData[n].pPrice);
+					category.push(myData[n].pCategory);
+					images.push(myData[n].pImage);
+				}
+				//product.push();
+				//document.getElementById("checking").innerHTML=product;
+            } catch(err) {
+			   document.getElementById("checking").innerHTML=err;
+            }
+	   </script>
+   {{/if}}
 
    <div id="Address" class="row">
    	<div class="col-sm-7">
    	<div id="delivery_address">
    		<h4><strong>Delivery Details</strong></h4>
-		<input type="text" name="name" placeholder="Add your name" id="details">
-		<input type="tel" name="contact" placeholder="Add your contact no." id="details">
-   		<textarea id="type_address" class="input-textarea" name="comment" placeholder="Add your Address here..."></textarea><br>
-   		<input type="button" name="" value="Add Details" id="addaddress">
+		<p id="details1" class="name_class">Name: </p>
+		<p id="details2" class="contact_class">Contact No: </p>
+		<p id="details3" class="address_class">Address: </p><br>
+		<a href="/addAddress"><button class="btn" id="addaddress">Change Address</button></a>
    	</div><br>
+
+    {{#if maddress}}
+     <script>
+		 var addr='{{{maddress}}}';
+		 var mAdd=JSON.parse(addr);
+
+		 var u_Name=mAdd[0].cName;
+		 var u_Address=mAdd[0].cAddress;
+		 var u_Contact=mAdd[0].cMobile;
+ 
+		 if(u_Name==null){
+			 document.querySelector("#details1").style.display="none";
+			 document.getElementById("details2").innerHTML="You have not added your address yet...plz add";
+			 document.querySelector("#details3").style.display="none";
+			 document.getElementById("addaddress").innerHTML="Add Address";	 
+		 }else{
+			 document.querySelector("#details1").style.display="block";
+			 document.querySelector("#details3").style.display="block";
+			 document.getElementById("details1").innerHTML="Name: "+u_Name;
+			 document.getElementById("details2").innerHTML="Contact No: "+u_Contact;
+			 document.getElementById("details3").innerHTML="Address: "+u_Address;
+		 }	 
+	 </script>
+   {{/if}}
+
    	<button id="summary_btn" onclick="summary()">Get Order Summary</button>
    </div>
    	<div class="col-sm-5" id="payment_method">
@@ -64,6 +129,9 @@
    	<div class="col-sm-12" id="summary"></div>
    </div>
    <div class="row">
+   	<div class="col-sm-12" id="totalAmount"></div>
+   </div>
+   <div class="row">
    	<div class="col-sm-12" id="Confirmorder"></div>
    </div>
 
@@ -72,17 +140,19 @@
 </body>
 
 <script type="text/javascript">
-	sum=0;
 	function summary()
 	{
+		var sum=0;
+		//document.getElementById("checking").innerHTML=unit_price;
 		document.querySelector("#summary").style.display="flex";
-		var images=['hotchclte.jfif','latte.jfif']
+		/*var images=['hotchclte.jfif','latte.jfif']
 		var product=['Hot Chocolate','Latte']
 		var category=['Beverages','Beverages']
-		var unit_price=[80,80]
+		var unit_price=[80,80] */
 		var table="";
 		table=table+'<tr>';
-		table=table+'<th class="col-sm-4">'+"Product"+'</th>';
+		table=table+'<th class="col-sm-4">'+"Product Image"+'</th>';
+		table+='<th class="col-sm-2">'+"Product"+'</th>';
 		table+='<th class="col-sm-2">'+"Category"+'</th>';
 		table+='<th class="col-sm-2">'+"Quantity"+'</th>';
 		table+='<th class="col-sm-2">'+"Unit Price"+'</th>';
@@ -90,18 +160,55 @@
 		table+='</tr>';
 		for(var i=0;i<product.length;i++)
 		{
+			var msrc="/"+images[i]+".jfif";
+			//var item_m='item_img'+i;
+			var ab='<td><img src="'+msrc+'"></td>';
 			table=table+'<tr>';
-			/**table+='<td>'+'<img src="" id="item_img">'+'</td>';**/
+			table+=ab; //'<td>'+'<img src="" id="item_img">'+'</td>';
 			table+='<td id="products_ordered">'+'<strong>'+product[i]+'</strong>'+'</td>';
 			table+='<td>'+category[i]+'</td>';
-			table+='<td>'+'<input type="number" name="quantity" id="quantity" value="0" min="0" max="10">'+'</td>';
+			table+='<td>'+'<input type="number" name="quantity" id="quantity" value="1" min="1" max="10">'+'</td>';
 			table+='<td id="up">'+unit_price[i]+'</td>';
-			table+='<td>'+'<button id="remove_btn">'+"Remove"+'</button>'+'</td>'
+			sum=sum+Number(unit_price[i]);
+			table+='<td>'+'<a id="removeId'+productId[i]+'" href="remove"><button onclick="removeFun('+productId[i]+')" id="remove_btn">'+"Remove"+'</button></a>'+'</td>'
 			/**item_img.setAttribute('src',images[i])**/
 			table+='</tr>';
 		}
 		document.getElementById("summary").innerHTML='<table>'+table+'</table>';
-		document.getElementById("Confirmorder").innerHTML='<button id="confirm">'+"Confirm Order"+'</button>';
+		document.getElementById("totalAmount").innerHTML='<p id="tAmount">Total Amount: Rs '+sum+'/-</p>';
+		document.getElementById("Confirmorder").innerHTML='<a id="orderLink" href="/place_order"><button id="confirm" onclick="confirmOrder()">Confirm Order</button></a>';
+		//document.getElementById("checking").innerHTML=;
+	}
+
+	function confirmOrder(){
+		var em=localStorage.emailId;
+		if(u_Name==null){
+			alert("Please add your address");
+			document.getElementById("orderLink").setAttribute("href","#");
+		}else if(localStorage.emailId===undefined){
+		  alert("Please login first...");
+          var mlink="/alert";
+          document.getElementById("orderLink").setAttribute("href",mlink);
+		}else{
+		  var pids=JSON.stringify(productId);
+          var mlink="/confirmOrder?pIds="+pids+"&id="+em+"&qty=1";
+          document.getElementById("orderLink").setAttribute("href",mlink);
+        }
+	}
+
+	function removeFun(prdctId){
+		//document.getElementById("checking").innerHTML="Wow great "+prdctId;
+		var em=localStorage.emailId;
+		if(localStorage.emailId===undefined){
+		  alert("Please login first...");
+          var mlink="/alert";
+		  var removeIdd="removeId"+prdctId;
+          document.getElementById(removeIdd).setAttribute("href",mlink);
+		}else{
+			var mlink="/removeItem?prdId="+prdctId+"&id="+em;
+			var removeIdd="removeId"+prdctId;
+			document.getElementById(removeIdd).setAttribute("href",mlink);
+		}
 	}
 </script>
 

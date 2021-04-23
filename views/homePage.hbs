@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Buddha Eats and Restaurant | BuddhaEats.com</title>
+    <title>Welcome to Buddha Bakers | BuddhaBakers.com</title>
     <link rel="stylesheet" type="text/css" href="/homePage.css">
     <link rel="stylesheet" type="text/css" href="/adminPage.css" />
     <link rel="stylesheet" media="screen and (max-width: 1060px" href="/phone.css">
@@ -12,6 +12,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Train+One&display=swap" rel="stylesheet">
+
+<script>
+    function checkLogin(){
+      var em2=localStorage.emailId;
+      if(localStorage.emailId===undefined){
+        var addlink1="/alert";
+        document.getElementById("myOrderId").setAttribute("href",addlink1);
+      }else{
+        var addlink2="/myorder?cEmId="+em2;
+        document.getElementById("myOrderId").setAttribute("href",addlink2);
+      }
+   }
+</script>
+
 </head>
 <body>
     <nav id="navbar">
@@ -23,13 +37,13 @@
             <li class="item"><a href="/menu">Menu</a></li>
             <li class="item"><a href="/customerlogin">Login</a></li>
             <li class="item"><a href="#" onclick="admin()">Admin Login</a></li>
-            <li class="item"><a href="/addToCart">My Orders</a></li>
+            <li class="item"><a id="myOrderId" href="#"><p onclick="checkLogin()">My Orders</p></a></li>
             <li class="item"><a href="#contact">Contact Us</a></li>
         </ul>
     </nav>
     <h3 id="check" style="text-align: right; color:#eeff00;"></h3>
     <section id="home">
-        <h1 class="h-primary">Welcome to Buddha Eats and Restaurant</h1>
+        <h1 class="h-primary">Welcome to Buddha Bakers</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis repudiandae quo similique dolorum neque iusto voluptatum quibusdam ducimus facere quam!
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis repudiandae quo similique dolorum neque iusto voluptatum quibusdam ducimus facere quam!</p>
         <a href="/menu"><button class="btn">Order Now</button></a>
@@ -113,15 +127,6 @@
    function cross(){
      document.querySelector("#admin-form").style.display="none";
    }
-  /* {{#if confirmation}}
-        function saveId(){
-            var x={{confirmation}};
-            localStorage.setItem("emailId",x); 
-            
-        }
-        document.getElementById("check").innerHTML="Hello";
-        saveId();
-   {{/if}} */
 
    if(localStorage.emailId.length>0){
        document.getElementById("check").innerHTML=localStorage.emailId;
@@ -137,7 +142,7 @@
    {{/if}}
  <footer>
         <div class="center">
-            Copyright &copy; www.buddhaeats.com | All Rights Reserved |
+            Copyright &copy; www.buddhabakers.com | All Rights Reserved |
         </div>
     </footer>
 </body>

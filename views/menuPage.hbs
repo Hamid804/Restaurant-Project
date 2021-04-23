@@ -42,6 +42,17 @@
           document.getElementById("mcart").setAttribute("href",addlink2);
         }
       }
+
+      function checkLoginOrder(){
+        var em2=localStorage.emailId;
+        if(localStorage.emailId===undefined){
+          var addlink1="/alert";
+          document.getElementById("myOrderLink").setAttribute("href",addlink1);
+        }else{
+          var addlink2="/myorder?cEmId="+em2;
+          document.getElementById("myOrderLink").setAttribute("href",addlink2);
+        }
+     }
     </script>
 
     {{#if message}}
@@ -50,6 +61,7 @@
          alert(x);
        </script>
     {{/if}}
+
 
   </head>
 
@@ -64,12 +76,12 @@
         <a href="/menu">
           <li class="nav-icons">Menu</li>
         </a>
-        <a href="#">
-          <li class="nav-icons">My Account</li>
+        <a id="myOrderLink" href="#">
+          <li onclick="checkLoginOrder()" class="nav-icons">My Orders</li>
         </a>
-        <a href="#">
+       <!-- <a href="#">
           <li class="nav-icons" onclick="admin()">Admin</li>
-        </a>
+        </a> -->
       </ul>
       <a id="mcart" href="/addToCart"><span onclick="addCart()" id="cart">My cart <i class="fas fa-shopping-cart"></i></span></a>
     </nav>
@@ -93,7 +105,7 @@
         <img src="/images.jfif" alt="Pineapple" />
         <p class="item-name">Pineapple</p>
         <p class="price">Rs. 350</p>
-        <a id="mylink1" href="link"><button onclick="checkLogin(1)" class="add">Add to cart</button></a>
+        <a id="mylink1" href="link"><button id="item1" onclick="checkLogin(1)" class="add">Add to cart</button></a>
         
       </div>
 
@@ -102,36 +114,36 @@
         <img src="/stwbryck.jfif" alt="Strawberry" />
         <p class="item-name">Strawberry</p>
         <p class="price">Rs. 350</p>
-        <a id="mylink2" href="link"><button onclick="checkLogin(2)" class="add">Add to cart</button></a>
+        <a id="mylink2" href="link"><button id="item2" onclick="checkLogin(2)" class="add">Add to cart</button></a>
       </div>
 
 
       <div class="item">
-        <img src="/btsctck.png" alt="Butterscotch" />
+        <img src="/btsctck.jfif" alt="Butterscotch" />
         <p class="item-name">Butterscotch</p>
         <p class="price">Rs. 400</p>
-        <a id="mylink3" href="link"><button onclick="checkLogin(3)" class="add">Add to cart</button></a>   
+        <a id="mylink3" href="link"><button id="item3" onclick="checkLogin(3)" class="add">Add to cart</button></a>   
       </div>
 
       <div class="item">
         <img src="/chocotrflck.jfif" alt="Choco Truffle" />
         <p class="item-name">Choco Truffle</p>
         <p class="price">Rs. 400</p>
-        <a id="mylink4" href="link"><button onclick="checkLogin(4)" class="add">Add to cart</button></a>
+        <a id="mylink4" href="link"><button id="item4" onclick="checkLogin(4)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/whtfrstck.jfif" alt="White Forest" />
         <p class="item-name">White Forest</p>
         <p class="price">Rs. 500</p>
-        <a id="mylink5" href="link"><button onclick="checkLogin(5)" class="add">Add to cart</button></a>
+        <a id="mylink5" href="link"><button id="item5" onclick="checkLogin(5)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/frtck.jfif" alt="Fresh fruit" />
         <p class="item-name">Fresh fruit</p>
         <p class="price">Rs. 500</p>
-        <a id="mylink6" href="link"><button onclick="checkLogin(6)" class="add">Add to cart</button></a>
+        <a id="mylink6" href="link"><button id="item6" onclick="checkLogin(6)" class="add">Add to cart</button></a>
       </div>
     </div>
 
@@ -147,42 +159,42 @@
         <img src="/chcochppst.jfif" alt="Chocochip" />
         <p class="item-name">Chocochip</p>
         <p class="price">Rs. 200</p>
-        <a id="mylink7" href="link"><button onclick="checkLogin(7)" class="add">Add to cart</button></a>
+        <a id="mylink7" href="link"><button id="item7" onclick="checkLogin(7)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/vnlpst.jfif" alt="Vanilla" />
         <p class="item-name">Vanilla</p>
         <p class="price">Rs. 200</p>
-        <a id="mylink8" href="link"><button onclick="checkLogin(8)" class="add">Add to cart</button></a>
+        <a id="mylink8" href="link"><button id="item8" onclick="checkLogin(8)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/stwbrypst.jfif" alt="Strawberry" />
         <p class="item-name">Strawberry</p>
         <p class="price">Rs. 150</p>
-        <a id="mylink9" href="link"><button onclick="checkLogin(9)" class="add">Add to cart</button></a>
+        <a id="mylink9" href="link"><button id="item9" onclick="checkLogin(9)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/redpst.jfif" alt="Red Velvet Cheesecake" />
         <p class="item-name">Red Velvet Cheesecake</p>
         <p class="price">Rs. 250</p>
-        <a id="mylink10" href="link"><button onclick="checkLogin(10)" class="add">Add to cart</button></a>
+        <a id="mylink10" href="link"><button id="item10" onclick="checkLogin(10)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/blbrypst.jfif" alt="Blueberry" />
         <p class="item-name">Blueberry</p>
         <p class="price">Rs. 200</p>
-        <a id="mylink11" href="link"><button onclick="checkLogin(11)" class="add">Add to cart</button></a>
+        <a id="mylink11" href="link"><button id="item11" onclick="checkLogin(11)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/mngpst.jfif" alt="Mango" />
         <p class="item-name">Mango</p>
         <p class="price">Rs. 200</p>
-        <a id="mylink12" href="link"><button onclick="checkLogin(12)" class="add">Add to cart</button></a>
+        <a id="mylink12" href="link"><button id="item12" onclick="checkLogin(12)" class="add">Add to cart</button></a>
       </div>
     </div>
 
@@ -197,42 +209,42 @@
         <img src="/esprso.jfif" alt="Espresso" />
         <p class="item-name">Espresso</p>
         <p class="price">Rs. 70</p>
-        <a id="mylink13" href="link"><button onclick="checkLogin(13)" class="add">Add to cart</button></a>
+        <a id="mylink13" href="link"><button id="item13" onclick="checkLogin(13)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/amercno.jfif" alt="Americano" />
         <p class="item-name">Americano</p>
         <p class="price">Rs. 70</p>
-        <a id="mylink14" href="link"><button onclick="checkLogin(14)" class="add">Add to cart</button></a>
+        <a id="mylink14" href="link"><button id="item14" onclick="checkLogin(14)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/hotchclte.jfif" alt="Hot Chocolate" />
         <p class="item-name">Hot Chocolate</p>
         <p class="price">Rs. 80</p>
-        <a id="mylink15" href="link"><button onclick="checkLogin(15)" class="add">Add to cart</button></a>
+        <a id="mylink15" href="link"><button id="item15" onclick="checkLogin(15)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/latte.jfif" alt="Latte" />
         <p class="item-name">Latte</p>
         <p class="price">Rs. 80</p>
-        <a id="mylink16" href="link"><button onclick="checkLogin(16)" class="add">Add to cart</button></a>
+        <a id="mylink16" href="link"><button id="item16" onclick="checkLogin(16)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/tea.jfif" alt="Tea" />
         <p class="item-name">Tea</p>
         <p class="price">Rs. 30</p>
-        <a id="mylink17" href="link"><button onclick="checkLogin(17)" class="add">Add to cart</button></a>
+        <a id="mylink17" href="link"><button id="item17" onclick="checkLogin(17)" class="add">Add to cart</button></a>
       </div>
 
       <div class="item">
         <img src="/lemnd.jfif" alt="Lemonade" />
         <p class="item-name">Lemonade</p>
         <p class="price">Rs. 40</p>
-        <a id="mylink18" href="link"><button onclick="checkLogin(18)" class="add">Add to cart</button></a>
+        <a id="mylink18" href="link"><button id="item18" onclick="checkLogin(18)" class="add">Add to cart</button></a>
       </div>
     </div>
     <footer class="text-center" style="background-color: #46b3e6">
@@ -291,13 +303,13 @@
    </div>
 
    <script type="text/javascript">
-    function admin()
+   /* function admin()
     {
       document.querySelector("#admin-form").style.display="flex";
     }
     function cross(){
       document.querySelector("#admin-form").style.display="none";
-    }
+    } */
 
     if(localStorage.emailId.length>0){
       document.getElementById("check").innerHTML=localStorage.emailId;
@@ -305,4 +317,18 @@
 
  </script>
   </body>
+
+  {{#if addedItem}}
+      <script>
+        var added1='{{{addedItem}}}';
+        var added2=JSON.parse(added1);
+
+        var totalItems=added2.length;
+
+        for(let b=0;b<totalItems;b++){
+          var itemId="item"+added2[b];
+          document.getElementById(itemId).innerHTML="Added";
+        }
+      </script>
+  {{/if}}
 </html>

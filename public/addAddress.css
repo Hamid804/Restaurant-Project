@@ -1,0 +1,124 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: #E8F1F5;
+    width: 100%;
+    height: 100%;
+}
+
+#logo {
+    font-family: Parisienne, cursive;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 50px;
+    text-align: center;
+
+    color: #3E206D;
+}
+
+#list {
+    list-style: none;
+}
+
+.nav-icons {
+    float: left;
+    font-family: Merriweather;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: #46B3E6;
+    margin-left: 40px;
+
+}
+
+#cart {
+    float: right;
+    font-family: Merriweather;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: #46B3E6;
+    margin-right: 40px;
+}
+
+.maindiv{
+    position: center;
+    height: 85%;
+    width: 100%;
+    margin-bottom: 200px;
+    margin-top: 20px;
+}
+
+#div1 {
+    display: inline-block;
+    background-color: ivory;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.5s;
+    padding-bottom: 30px;
+    margin-bottom: 500px;
+}
+
+#div1:hover {
+    box-shadow: -6px 6px 10px 1px rgba(44, 44, 44, 0.75);
+    -webkit-box-shadow: -6px 6px 10px 1px rgba(44, 44, 44, 0.75);
+    -moz-box-shadow: -6px 6px 10px 1px rgba(44, 44, 44, 0.75);
+}
+
+#div1 h2 {
+    margin: 20px 60px;
+    color: rgb(87, 84, 84);
+    font-size: 2rem;
+
+}
+
+#div1 hr {
+    margin: 10px auto;
+    width: 50%;
+    padding: 2px;
+    background: rgb(87, 84, 84);
+    border: none;
+    border-radius: 20px;
+}
+
+#div1 input {
+    border: none;
+    /* background-color:rgb(221, 237, 250); */
+    padding: 20px;
+    margin: 20px auto;
+    border-bottom: 1px solid rgb(170, 170, 170);
+    background: transparent;
+    outline: none;
+    font-size: 1.2rem;
+}
+
+#addAddress {
+    border: none;
+    background-color: rgb(121, 180, 248);
+    padding: 0.7rem 3rem;
+    margin: 15px auto;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    color: white;
+    transition: 0.5s;
+    outline: none;
+}
+
+#login-btn:hover {
+    transform: scale(1.2);
+}

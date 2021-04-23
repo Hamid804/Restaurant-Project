@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/addAddress.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- <link rel="stylesheet" href="css/clogin.css"> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600;700&family=Parisienne&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/045409986e.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Add your address</title>
+
+    <script>
+      function addCart(){
+        var em2=localStorage.emailId;
+        if(localStorage.emailId===undefined){
+          var addlink="/alert";
+          document.getElementById("mcart").setAttribute("href",addlink);
+        }else{
+          var addlink2="/addToCart?cEmId="+em2;
+          document.getElementById("mcart").setAttribute("href",addlink2);
+        }
+      }
+
+      function modifiedAction(){
+        var em=localStorage.emailId;
+        if(localStorage.emailId===undefined){
+          alert("Please login first...");
+          var mlink="/alert";
+          document.getElementById("addressForm").setAttribute("action",mlink);
+        }else{
+          var mlink="/auth/enterAddress?id="+em;
+          document.getElementById("addressForm").setAttribute("action",mlink);
+        }
+      }
+    </script>
+  </head>
+
+
+  <body>
+    <nav>
+      <h1 id="logo">Buddha Bakers</h1>
+      <h3 id="check" style="text-align: right; color:hsl(133, 100%, 50%);"></h3>
+      <ul id="list">
+        <a href="/home">
+          <li class="nav-icons">Home</li>
+        </a>
+        <a href="/menu">
+          <li class="nav-icons">Menu</li>
+        </a>
+        <a href="#">
+          <li class="nav-icons">My Account</li>
+        </a>
+      </ul>
+      <a id="mcart" href="/addToCart"><span onclick="addCart()" id="cart">My cart <i class="fas fa-shopping-cart"></i></span></a>
+    </nav>
+
+    <div class="maindiv">
+        <div id="div1">
+            <h2>Add your details</h2>
+            <hr />
+            <form id="addressForm" action="" method="POST">
+                <input type="text" name="user_name" placeholder="Enter your name" required />
+                <br />
+                <input type="text" name="user_contact" placeholder="Enter your contact number" required/>
+                <br />
+                <input type="text" name="user_address" placeholder="Enter your address" required/>
+                <br />
+                <button onclick="modifiedAction()" type="submit" id="addAddress">ADD</button>
+                <br />
+            </form>
+        </div>
+    </div>
+  </body>
+</html>
